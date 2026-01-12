@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+header {
+    padding: 2rem;
+    text-align: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FF0099 0%, #00D4FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #FF0099 0%, #00D4FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #b8b8b8;
+    margin-bottom: 3rem;
+}
+
+.plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.plan-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    border-color: #FF0099;
+}
+
+.plan-card.popular {
+    border-color: #FF0099;
+    box-shadow: 0 0 40px rgba(255, 0, 153, 0.3);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #FF0099 0%, #FF3366 100%);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.plan-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.price {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+}
+
+.currency {
+    font-size: 1.5rem;
+    margin-right: 0.25rem;
+}
+
+.amount {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #FF0099;
+}
+
+.period {
+    font-size: 1.2rem;
+    color: #b8b8b8;
+    margin-left: 0.5rem;
+}
+
+.savings {
+    color: #00D4FF;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.trial-badge {
+    background: rgba(0, 212, 255, 0.2);
+    border: 1px solid #00D4FF;
+    color: #00D4FF;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.features li:last-child {
+    border-bottom: none;
+}
+
+.subscribe-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(90deg, #FF0099 0%, #FF3366 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subscribe-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 0, 153, 0.4);
+}
+
+.disclaimer {
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .plans {
+        grid-template-columns: 1fr;
+    }
+}
