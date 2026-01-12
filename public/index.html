@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe - Oodles & Doodles</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">oodles&doodles</div>
+    </header>
+
+    <main class="pricing-container">
+        <h1>Choose Your Plan</h1>
+        <p class="subtitle">Start your free trial today - no credit card required until trial ends</p>
+
+        <div class="plans">
+            <!-- Weekly Plan -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2>Weekly</h2>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">6.99</span>
+                        <span class="period">/week</span>
+                    </div>
+                </div>
+                <div class="trial-badge">7-Day Free Trial</div>
+                <ul class="features">
+                    <li>✓ Unlimited profiles</li>
+                    <li>✓ Unlimited messaging</li>
+                    <li>✓ See who likes you</li>
+                    <li>✓ Advanced filters</li>
+                    <li>✓ Priority support</li>
+                </ul>
+                <button class="subscribe-btn" data-plan="weekly">Start Free Trial</button>
+            </div>
+
+            <!-- Monthly Plan (Popular) -->
+            <div class="plan-card popular">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="plan-header">
+                    <h2>Monthly</h2>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">23.99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="savings">Save 14%</div>
+                </div>
+                <div class="trial-badge">1-Month Free Trial</div>
+                <ul class="features">
+                    <li>✓ Everything in Weekly</li>
+                    <li>✓ Message expiry disabled</li>
+                    <li>✓ Advanced analytics</li>
+                    <li>✓ VIP support</li>
+                </ul>
+                <button class="subscribe-btn" data-plan="monthly">Start Free Trial</button>
+            </div>
+
+            <!-- Yearly Plan -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h2>Yearly</h2>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">88.82</span>
+                        <span class="period">/year</span>
+                    </div>
+                    <div class="savings">Best Value - Save 70%</div>
+                </div>
+                <div class="trial-badge">60-Day Free Trial</div>
+                <ul class="features">
+                    <li>✓ Everything in Monthly</li>
+                    <li>✓ Monthly profile boost</li>
+                    <li>✓ Exclusive events access</li>
+                    <li>✓ Lifetime VIP support</li>
+                </ul>
+                <button class="subscribe-btn" data-plan="yearly">Start Free Trial</button>
+            </div>
+        </div>
+
+        <p class="disclaimer">All plans auto-renew. Cancel anytime during your trial with no charge.</p>
+    </main>
+
+    <script>
+        // Initialize Paddle
+        Paddle.Initialize({
+            token: 'YOUR_PADDLE_CLIENT_TOKEN',
+            environment: 'sandbox'
+        });
+
+        const PRODUCT_IDS = {
+            weekly: 'pro_WEEKLY_ID',
+            monthly: 'pro_MONTHLY_ID',
+            yearly: 'pro_YEARLY_ID'
+        };
+
+        document.querySelectorAll('.subscribe-btn').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const plan = e.target.dataset.plan;
+                const productId = PRODUCT_IDS[plan];
+
+                try {
+                    Paddle.Checkout.open({
+                        items: [{ priceId: productId, quantity: 1 }],
+                        customData: {
+                            userId: 'USER_ID_HERE'
+                        },
+                        successUrl: `${window.location.origin}/success.html`
+                    });
+                } catch (error) {
+                    console.error('Checkout error:', error);
+                    alert('Failed to open checkout. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
